@@ -28,7 +28,7 @@ echo ""
 
 echo "Check tomcat service status"
 echo "---------------------------"
-service tomcat9 status
+service tomcat status
 echo ""
 
 echo "Check application home page"
@@ -38,4 +38,4 @@ echo ""
 
 echo "Check tomcat logs"
 echo "-----------------"
-cat /var/log/tomcat9/catalina.out
+cat /var/log/tomcat/catalina.out

@@ -7,9 +7,9 @@ After=syslog.target network.target
 Type=forking
 
 Environment=JAVA_HOME={{ tomcat_java_home }}
-Environment=CATALINA_PID={{ tomcat_install_path }}/{{ tomcat_service_name }}/temp/tomcat.pid
-Environment=CATALINA_HOME={{ tomcat_install_path }}/{{ tomcat_service_name }}
-Environment=CATALINA_BASE={{ tomcat_install_path }}/{{ tomcat_service_name }}
+Environment=CATALINA_PID={{ tomcat_install_path }}/temp/tomcat.pid
+Environment=CATALINA_HOME={{ tomcat_install_path }}
+Environment=CATALINA_BASE={{ tomcat_install_path }}
 
 {% if env in ['dev','development'] %}
 Environment='CATALINA_OPTS=-Xms{{ tomcat_dev_jvm_memory_xms }}M -Xmx{{ tomcat_dev_jvm_memory_xms }}M -server -XX:+UseParallelGC {% if tomcat_debug_mode == True %}-Xdebug -Xrunjdwp:transport=dt_socket,address={{ tomcat_port_debug }},server=y,suspend=n{% endif %}'
@@ -19,8 +19,8 @@ Environment='CATALINA_OPTS=-Xms{{ tomcat_prod_jvm_memory_xms }}M -Xmx{{ tomcat_p
 {% endif %}
 Environment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'
 
-ExecStart={{ tomcat_install_path }}/{{ tomcat_service_name }}/bin/startup.sh
-ExecStop={{ tomcat_install_path }}/{{ tomcat_service_name }}/bin/shutdown.sh
+ExecStart={{ tomcat_install_path }}/bin/startup.sh
+ExecStop={{ tomcat_install_path }}/bin/shutdown.sh
 
 User={{ tomcat_user }}
 Group={{ tomcat_group }}

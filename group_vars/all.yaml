@@ -3,7 +3,7 @@ tomcat_service_name: tomcat
 tomcat_user: tomcat
 tomcat_group: tomcat
 tomcat_owner: tomcat
-tomcat_java_home: /usr/lib/jvm/jre
+tomcat_java_home: /usr/lib/jvm/java-1.11.0-openjdk-amd64
 tomcat_debug_mode: False
 tomcat_port_debug: 8000
 tomcat_dev_jvm_memory_xms: 256

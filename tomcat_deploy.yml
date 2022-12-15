@@ -1,12 +1,9 @@
 ---
 - name: Tomcat deploy
   hosts: all
-  become: yes               # If to escalate privilege
-  become_method: sudo 
   gather_subset: [ "min" ]
   connection: local
-  vars:
-    tomcat_ver: 9.0.64                          # Tomcat version to install
   roles:
     - { role: dependencies }
     - { role: tomcat }
+
