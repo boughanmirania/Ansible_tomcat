@@ -1,0 +1,5 @@
+---
+- name: Deploy war
+  ansible.builtin.copy:
+    src: sample.war
+    dest: "{{tomcat_install_path}}/webapps/"

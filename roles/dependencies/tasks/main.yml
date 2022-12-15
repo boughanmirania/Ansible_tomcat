@@ -1,0 +1,12 @@
+---
+- name: Update and upgrade apt packages
+  apt:
+    upgrade: yes
+    update_cache: yes
+  tags: print_action
+
+- name: install JDK 11
+  apt:
+    name: openjdk-11-jdk
+    state: present
+  tags: print_action
