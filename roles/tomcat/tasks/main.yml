@@ -38,9 +38,6 @@
     state: directory
   tags: print_action
 
-- name: Deploy war file
-  import_tasks: war.yaml
-  tags: print_action
 
 - name: Copy Tomcat service from local to remote
   template:
@@ -57,3 +54,11 @@
     daemon_reload: true
   tags: print_action
 
+- name: Deploy war file
+  import_tasks: war.yaml
+  tags: print_action
+
+- name: Restart tomcat
+  service:
+    name: tomcat
+    state: restarted

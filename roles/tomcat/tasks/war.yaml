@@ -3,3 +3,8 @@
   ansible.builtin.copy:
     src: sample.war
     dest: "{{tomcat_install_path}}/webapps/"
+- name: Set correct permissions
+  file: 
+    path: "{{tomcat_install_path}}/webapps/sample.war"
+    owner: "{{tomcat_owner}}"
+    group: "{{tomcat_group}}"
