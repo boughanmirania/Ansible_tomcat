@@ -26,4 +26,4 @@ COPY tomcat_test.sh /usr/local/bin/tomcat_test.sh
 COPY tomcat_deploy.yml /data/
 
 
-ENTRYPOINT ["bash", "tomcat_test.sh" ]
+ENTRYPOINT ["bash", "tomcat_test.sh", "hosts" ]
