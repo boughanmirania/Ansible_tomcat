@@ -19,11 +19,8 @@ ENV pip_packages "\
 
 RUN pip3 install $pip_packages
 WORKDIR /data
-COPY /roles /data/
-COPY hosts /data/
-COPY group_vars /data/
-COPY tomcat_test.sh /usr/local/bin/tomcat_test.sh
-COPY tomcat_deploy.yml /data/
+COPY . .
 
 
-ENTRYPOINT ["bash", "tomcat_test.sh", "hosts" ]
+
+ENTRYPOINT ["bash", "tomcat_test.sh"]
