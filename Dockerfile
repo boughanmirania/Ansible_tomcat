@@ -7,6 +7,8 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y \
       python3 \
       python3-distutils 
 
+RUN apt-get update && apt-get install -y \
+curl
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
     python3 get-pip.py && \
     rm get-pip.py && \
@@ -17,6 +19,11 @@ ENV pip_packages "\
 
 RUN pip3 install $pip_packages
 WORKDIR /data
-COPY tomcat_test.sh data/tomcat_test.sh
-COPY tomcat_deploy.yml data/tomcat_deploy.yml
-ENTRYPOINT [ "tomcat_test.sh" ]
+COPY /roles /data/
+COPY hosts /data/
+COPY group_vars /data/
+COPY tomcat_test.sh /usr/local/bin/tomcat_test.sh
+COPY tomcat_deploy.yml /data/
+
+
+ENTRYPOINT ["bash", "tomcat_test.sh" ]
